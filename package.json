@@ -1,0 +1,10 @@
+{
+  "name": "jekyll-personal-site",
+  "private": true,
+  "scripts": {
+    "build:ts": "tsc assets/js/main.ts --outDir assets/js --target ES2015 --module ES2015"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
