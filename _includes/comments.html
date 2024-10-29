@@ -1,0 +1,58 @@
+<section class="comments-section">
+  <div class="comments-header">
+    <h3>Discussion</h3>
+    <div class="comment-stats">
+      <span class="comment-count">{{ site.data.comments[page.slug] | size }} comments</span>
+      •
+      <span class="view-count">{{ page.views | default: 0 }} views</span>
+      •
+      <span class="reading-time">{{ content | number_of_words | divided_by: 200 | round }} min read</span>
+    </div>
+  </div>
+
+  <form class="comment-form" action="/comments" method="POST">
+    <textarea name="comment" placeholder="Add to the discussion" required></textarea>
+    <div class="comment-meta">
+      <div class="formatting">
+        <button type="button" title="Bold">B</button>
+        <button type="button" title="Italic">I</button>
+        <button type="button" title="Code">{}</button>
+        <button type="button" title="Link">🔗</button>
+        <span class="formatting-help">Supports Markdown</span>
+      </div>
+      <button type="submit">Post Comment</button>
+    </div>
+  </form>
+
+  {% if site.data.comments[page.slug] %}
+    {% assign comments = site.data.comments[page.slug] | sort: 'date' %}
+    <div class="comments-list">
+      {% for comment in comments %}
+        <div class="comment" id="comment-{{ forloop.index }}">
+          <div class="comment-meta">
+            <img src="{{ comment.avatar }}" alt="{{ comment.name }}" class="avatar">
+            <span class="author">{{ comment.name }}</span>
+            <span class="date">{{ comment.date | date: "%B %d, %Y" }}</span>
+            {% if comment.badges %}
+              <div class="badges">
+                {% for badge in comment.badges %}
+                  <span class="badge {{ badge }}">{{ badge }}</span>
+                {% endfor %}
+              </div>
+            {% endif %}
+          </div>
+          <div class="comment-content">{{ comment.content | markdownify }}</div>
+          <div class="comment-actions">
+            <button class="reply">Reply</button>
+            <button class="share">Share</button>
+            <div class="vote">
+              <button class="upvote">▲</button>
+              <span class="score">{{ comment.score | default: 0 }}</span>
+              <button class="downvote">▼</button>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+</section>

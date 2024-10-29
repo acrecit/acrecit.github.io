@@ -19,3 +19,6 @@ defaults:
       path: ""
     values:
       layout: "default"
+
+# Add this to your existing config
+# future: true
