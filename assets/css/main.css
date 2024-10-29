@@ -126,3 +126,63 @@ body {
         font-size: 1rem;
     }
 }
+
+.posts {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.post-preview {
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.post-preview h2 {
+    margin-bottom: 0.5rem;
+}
+
+.post-preview h2 a {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.post-preview h2 a:hover {
+    color: var(--primary-color);
+}
+
+.post-preview time {
+    color: #6b7280;
+    font-size: 0.875rem;
+}
+
+.post-excerpt {
+    margin: 1rem 0;
+}
+
+.read-more {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.read-more:hover {
+    text-decoration: underline;
+}
+
+/* Single post styles */
+.post {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.post-header {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.post-content {
+    line-height: 1.8;
+}
