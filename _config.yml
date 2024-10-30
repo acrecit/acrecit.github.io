@@ -5,7 +5,7 @@ baseurl: ""
 
 # Build settings
 markdown: kramdown
-permalink: /blog/:title/
+permalink: /:title/
 
 # Collections
 collections:
