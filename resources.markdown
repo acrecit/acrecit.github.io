@@ -4,9 +4,13 @@ title: Resources
 permalink: /resources/
 ---
 
-here are some useful things i've found over the years.
+<!-- here are some useful things i've found over the years.
 
 i know theres nothing here yet, but im working on it.
+
+ -->  
+
+coming soon...
 
 <!-- ## Category 1
 - **Subcategory A**
