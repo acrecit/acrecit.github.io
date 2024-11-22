@@ -1,0 +1,35 @@
+---
+layout: page
+title: Projects
+permalink: /projects/
+---
+
+<div class="page">
+  <div class="projects-container">
+    <div class="projects-grid">
+      {% for project in site.projects %}
+        <article class="project-card">
+          <h3>{{ project.title }}</h3>
+          <div class="project-content">
+            {{ project.content }}
+          </div>
+          {% if project.tags %}
+            <div class="project-tags">
+              {% for tag in project.tags %}
+                <span class="tag">{{ tag }}</span>
+              {% endfor %}
+            </div>
+          {% endif %}
+          <div class="project-links">
+            {% if project.github %}
+              <a href="{{ project.github }}" class="project-link" target="_blank">GitHub</a>
+            {% endif %}
+            {% if project.demo %}
+              <a href="{{ project.demo }}" class="project-link" target="_blank">Demo</a>
+            {% endif %}
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</div> 

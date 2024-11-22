@@ -5,16 +5,81 @@ title: Home
 
 <div class="page">
   <div class="page-content">
-    <h1>My name is Josiah,</h1>
-    <h2> also sometimes known as acreciti.</h2>
-    <p>I'm a cybersecurity student, bad developer, hardware nerd, indie hacker, and dark triad ubermensch philosopher-king.</p>
-    <p>I post content about things I'm building, thinking about, or just enjoy. My X profile and others are linked below.</p>
-    <p>I use arch, btw.</p>
+    <div class="info-grid">
+      <!-- Identity Section -->
+      <div class="grid-section identity">
+        <div class="section-header">
+          <h1>ACRECITI</h1>
+          <div class="status-line">
+            <span class="status active">ACTIVE</span>
+            <span class="timestamp">UPTIME: <span id="uptime">0:00:00</span></span>
+          </div>
+        </div>
+        <div class="tags">
+          <span class="tag">CYBERSEC</span>
+          <span class="tag">DEV</span>
+          <span class="tag">HARDWARE</span>
+          <span class="tag">ÜBERMENSCH</span>
+          <span class="tag">PHILOSOPHER-KING</span>
+        </div>
+      </div>
 
-    <h2>Find me on:</h2>
-    <ul>
-      <li><a href="https://github.com/acrecit">GitHub</a></li>
-      <li><a href="https://x.com/acreciti">X/Twitter</a></li>
-    </ul>
+      <!-- Stats Grid -->
+      <div class="grid-section metrics">
+        <div class="metrics-container">
+          <a href="/posts" class="metric-box">
+            <span class="metric-label">POSTS</span>
+            <span class="metric-value">{{ site.posts.size }}</span>
+          </a>
+          <a href="/projects" class="metric-box">
+            <span class="metric-label">PROJECTS</span>
+            <span class="metric-value">{{ site.projects.size }}</span>
+          </a>
+          <a href="https://github.com/acrecit" class="metric-box">
+            <span class="metric-label">COMMITS</span>
+            <span class="metric-value" id="commit-count">Loading...</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Recent Activity -->
+      <div class="grid-section activity">
+        <h3>RECENT TRANSMISSIONS</h3>
+        <div class="activity-feed">
+          {% assign post_count = site.posts | size %}
+          {% for post in site.posts limit:2 %}
+          <a href="{{ post.url }}" class="activity-item {% if post_count == 1 %}single-post{% endif %}">
+            <div class="activity-content">
+              <span class="activity-title">{{ post.title }}</span>
+              <span class="activity-time">[{{ post.date | date: "%Y-%m-%d" }}]</span>
+            </div>
+          </a>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Links Grid -->
+      <div class="grid-section connections">
+        <h3>NETWORK NODES</h3>
+        <div class="connection-grid">
+          <a href="https://github.com/acrecit" class="node">
+            <span class="node-icon">⌘</span>
+            <span class="node-label">GITHUB</span>
+          </a>
+          <a href="https://x.com/acreciti" class="node">
+            <span class="node-icon">✧</span>
+            <span class="node-label">X</span>
+          </a>
+          <a href="/resources" class="node">
+            <span class="node-icon">⚡</span>
+            <span class="node-label">RESOURCES</span>
+          </a>
+          <a href="/posts" class="node">
+            <span class="node-icon">◈</span>
+            <span class="node-label">POSTS</span>
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
