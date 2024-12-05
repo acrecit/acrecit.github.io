@@ -19,39 +19,23 @@ function updateUptime() {
     }, 1000);
 }
 
-// X Post Counter
-async function fetchXPostCount() {
-    const X_BEARER_TOKEN = 'AAAAAAAAAAAAAAAAAAAAAHZ3xQEAAAAAxkhaPBtQX3uBFcCW%2BlXIK0AF5uU%3DPJx1fgmo0ERuEsn2f0CY7LHadB1rBvpLzgKDButT5EYvusUArV';
-    
+// Fetch commit count
+async function fetchCommitCount() {
     try {
-        console.log('Fetching X post count...');
-        const response = await fetch('https://api.twitter.com/2/users/by/username/acreciti?user.fields=public_metrics', {
-            headers: {
-                'Authorization': `Bearer ${X_BEARER_TOKEN}`,
-                'Content-Type': 'application/json'
-            }
-        });
-        console.log('Response status:', response.status);
+        const response = await fetch('https://api.github.com/users/acrecit/events');
         const data = await response.json();
-        console.log('API Response:', data);
-        
-        if (data.data && data.data.public_metrics) {
-            document.getElementById('x-post-count').textContent = 
-                data.data.public_metrics.tweet_count.toLocaleString();
-        } else {
-            document.getElementById('x-post-count').textContent = 'API ERROR';
-        }
+        const pushEvents = data.filter(event => event.type === 'PushEvent');
+        const totalCommits = pushEvents.reduce((total, event) => total + event.payload.commits.length, 0);
+        document.getElementById('commit-count').textContent = totalCommits;
     } catch (error) {
-        console.error('Error fetching X post count:', error);
-        document.getElementById('x-post-count').textContent = 'ERROR';
+        console.error('Error fetching commit count:', error);
+        document.getElementById('commit-count').textContent = 'ERROR';
     }
 }
 
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
     fetchCommitCount();
-    fetchXPostCount();
-    setInterval(fetchCommitCount, 300000); // Every 5 minutes
-    setInterval(fetchXPostCount, 300000);  // Every 5 minutes
+    setInterval(fetchCommitCount, 300000); // Refresh every 5 minutes
     updateUptime();
 });
