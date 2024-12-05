@@ -250,9 +250,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .posts {
-    max-width: 100%;
+    width: 100%;
+    max-width: 800px;
     margin: 0 auto;
-    padding: 0;
+    padding: 1rem;
 }
 
 .post-preview {
@@ -887,63 +888,23 @@ a:hover, button:hover, input[type="submit"]:hover, .post-card:hover {
 
 @media (max-width: 768px) {
     .posts {
-        padding: 0 1rem;
+        width: 100%;
+        max-width: 100%;
+        padding: 1rem;
+        margin: 0;
     }
     
     .post-preview {
-        margin: 2rem 0;
+        margin: 1rem 0;
+        width: 100%;
     }
     
     .post-preview:hover {
-        transform: none;  /* Disable the hover shift on mobile */
-    }
-}
-
-@media (max-width: 768px) {
-    .page {
-        padding: 0;
-        margin: 0;
-        width: 100%;
-    }
-
-    .page-content {
-        padding: 0;
-    }
-
-    .info-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-        padding: 1rem;
-        margin: 0;
-        border: none;
+        transform: none;
     }
     
-    .grid-section {
-        margin: 0 0 1rem 0;
-        padding: 1rem;
-    }
-
-    .post {
-        padding: 1rem;
-        margin: 0;
-        max-width: 100%;
-    }
-
-    .activity-feed {
-        flex-direction: column;
-    }
-
-    .activity-item {
+    .post-content {
         width: 100%;
-        margin-bottom: 0.5rem;
-    }
-
-    .metrics-container {
-        flex-direction: column;
-    }
-
-    .metric-box {
-        width: 100%;
-        margin-bottom: 0.5rem;
+        overflow-x: hidden;
     }
 }
