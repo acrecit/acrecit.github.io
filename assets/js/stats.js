@@ -1,14 +1,34 @@
-// Fetch commit count
+// GitHub API integration
 async function fetchCommitCount() {
     try {
-        const response = await fetch('https://api.github.com/users/acrecit/events');
-        const data = await response.json();
-        const pushEvents = data.filter(event => event.type === 'PushEvent');
-        const totalCommits = pushEvents.reduce((total, event) => total + event.payload.commits.length, 0);
+        // Get all repos first
+        const reposResponse = await fetch('https://api.github.com/users/acrecit/repos');
+        const repos = await reposResponse.json();
+        
+        let totalCommits = 0;
+        
+        // Get commit count for each repo
+        for (const repo of repos) {
+            const commitsResponse = await fetch(`https://api.github.com/repos/acrecit/${repo.name}/commits?per_page=1`);
+            const linkHeader = commitsResponse.headers.get('Link');
+            
+            if (linkHeader) {
+                // Extract last page number from Link header
+                const matches = linkHeader.match(/page=(\d+)>; rel="last"/);
+                if (matches) {
+                    totalCommits += parseInt(matches[1]);
+                }
+            } else {
+                // If no Link header, count commits in response
+                const commits = await commitsResponse.json();
+                totalCommits += commits.length;
+            }
+        }
+        
         document.getElementById('commit-count').textContent = totalCommits;
     } catch (error) {
         console.error('Error fetching commit count:', error);
-        document.getElementById('commit-count').textContent = 'ERROR';
+        document.getElementById('commit-count').textContent = 'Error';
     }
 }
 
