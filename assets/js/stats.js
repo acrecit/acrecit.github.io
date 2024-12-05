@@ -1,3 +1,17 @@
+// Fetch commit count
+async function fetchCommitCount() {
+    try {
+        const response = await fetch('https://api.github.com/users/acrecit/events');
+        const data = await response.json();
+        const pushEvents = data.filter(event => event.type === 'PushEvent');
+        const totalCommits = pushEvents.reduce((total, event) => total + event.payload.commits.length, 0);
+        document.getElementById('commit-count').textContent = totalCommits;
+    } catch (error) {
+        console.error('Error fetching commit count:', error);
+        document.getElementById('commit-count').textContent = 'ERROR';
+    }
+}
+
 // Uptime tracker
 function updateUptime() {
     const startTime = localStorage.getItem('pageLoadTime') || Date.now().toString();
@@ -17,20 +31,6 @@ function updateUptime() {
         const uptime = currentTime - parseInt(startTime);
         document.getElementById('uptime').textContent = formatUptime(uptime);
     }, 1000);
-}
-
-// Fetch commit count
-async function fetchCommitCount() {
-    try {
-        const response = await fetch('https://api.github.com/users/acrecit/events');
-        const data = await response.json();
-        const pushEvents = data.filter(event => event.type === 'PushEvent');
-        const totalCommits = pushEvents.reduce((total, event) => total + event.payload.commits.length, 0);
-        document.getElementById('commit-count').textContent = totalCommits;
-    } catch (error) {
-        console.error('Error fetching commit count:', error);
-        document.getElementById('commit-count').textContent = 'ERROR';
-    }
 }
 
 // Initialize
