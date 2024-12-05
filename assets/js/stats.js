@@ -27,18 +27,19 @@ async function fetchXPostCount() {
         console.log('Fetching X post count...');
         const response = await fetch('https://api.twitter.com/2/users/by/username/acreciti?user.fields=public_metrics', {
             headers: {
-                'Authorization': `Bearer ${X_BEARER_TOKEN}`
+                'Authorization': `Bearer ${X_BEARER_TOKEN}`,
+                'Content-Type': 'application/json'
             }
         });
+        console.log('Response status:', response.status);
         const data = await response.json();
-        console.log('X API response:', data);
+        console.log('API Response:', data);
         
         if (data.data && data.data.public_metrics) {
             document.getElementById('x-post-count').textContent = 
                 data.data.public_metrics.tweet_count.toLocaleString();
         } else {
-            console.error('Invalid response format:', data);
-            document.getElementById('x-post-count').textContent = 'ERROR';
+            document.getElementById('x-post-count').textContent = 'API ERROR';
         }
     } catch (error) {
         console.error('Error fetching X post count:', error);
