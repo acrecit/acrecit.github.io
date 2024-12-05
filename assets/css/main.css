@@ -250,9 +250,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .posts {
-    max-width: 800px;
+    max-width: 100%;
     margin: 0 auto;
-    padding: 0 1rem;
+    padding: 0;
 }
 
 .post-preview {
@@ -882,5 +882,19 @@ a:hover, button:hover, input[type="submit"]:hover, .post-card:hover {
     .tags {
         flex-wrap: wrap;
         justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .posts {
+        padding: 0 1rem;
+    }
+    
+    .post-preview {
+        margin: 2rem 0;
+    }
+    
+    .post-preview:hover {
+        transform: none;  /* Disable the hover shift on mobile */
     }
 }
