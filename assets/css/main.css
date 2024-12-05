@@ -898,3 +898,43 @@ a:hover, button:hover, input[type="submit"]:hover, .post-card:hover {
         transform: none;  /* Disable the hover shift on mobile */
     }
 }
+
+@media (max-width: 768px) {
+    .page {
+        padding: 0.5rem;
+        margin: 1rem auto;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 0.5rem;
+    }
+    
+    .grid-section {
+        margin-bottom: 1rem;
+        padding: 0.8rem;
+    }
+
+    .activity-feed {
+        flex-direction: column;
+    }
+
+    .activity-item {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+
+    .metrics-container {
+        flex-direction: column;
+    }
+
+    .metric-box {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+
+    .post {
+        padding: 0 0.5rem;
+    }
+}
