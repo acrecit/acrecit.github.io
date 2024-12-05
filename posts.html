@@ -1,0 +1,33 @@
+---
+layout: default
+title: Posts
+permalink: /posts/
+---
+
+<div class="page">
+  <div class="archive-container">
+    <div class="archive-grid">
+      <section class="archive-section">
+        <h2>Latest Posts</h2>
+        <div class="posts-grid">
+          {% for post in site.posts %}
+            <article class="post-card" onclick="window.location.href='{{ post.url }}'">
+              <h3>
+                <a>{{ post.title }}</a>
+              </h3>
+              <time datetime="{{ post.date | date_to_xmlschema }}">
+                {{ post.date | date: "%B %d, %Y" }}
+              </time>
+              <div class="post-preview-content">
+                <div class="preview-text">
+                  {{ post.content | strip_html | truncatewords: 50 }}
+                </div>
+              </div>
+              <div class="read-more">Read More →</div>
+            </article>
+          {% endfor %}
+        </div>
+      </section>
+    </div>
+  </div>
+</div>

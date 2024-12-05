@@ -5,10 +5,12 @@ baseurl: ""
 
 # Build settings
 markdown: kramdown
-permalink: /:title/
+permalink: /:categories/:year/:month/:day/:title/
 
 # Collections
 collections:
+  posts:
+    output: true
   projects:
     output: true
     permalink: /projects/:path/
