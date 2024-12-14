@@ -11,7 +11,7 @@
     
     /* Fonts */
     --heading-font: 'Cinzel Decorative', cursive;
-    --terminal-font: 'Garamond', serif;
+    --terminal-font: 'EB Garamond', serif;
     --border: var(--matrix-green);
 }
 
@@ -43,7 +43,7 @@
 }
 
 body {
-    font-family: var(--body-font);
+    font-family: var(--terminal-font);
     line-height: 1.6;
     color: var(--text-color);
     background: var(--bg-color);
