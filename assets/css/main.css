@@ -11,7 +11,7 @@
     
     /* Fonts */
     --heading-font: 'Cinzel Decorative', cursive;
-    --terminal-font: 'Space Mono', monospace;
+    --terminal-font: 'Garamond', serif;
     --border: var(--matrix-green);
 }
 
