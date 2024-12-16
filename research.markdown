@@ -13,8 +13,6 @@ blood memory theory and related topics
 
 modern warrior training methods
 
-what and why and how is israel?
-
 sovereign house
 
 ## Research Notes
