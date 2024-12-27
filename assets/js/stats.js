@@ -1,5 +1,5 @@
 // GitHub API integration
-async function fetchCommitCount() {
+async function updateCommitCount() {
     try {
         // Get all repos first
         const reposResponse = await fetch('https://api.github.com/users/acrecit/repos');
@@ -25,12 +25,17 @@ async function fetchCommitCount() {
             }
         }
         
-        document.getElementById('commit-count').textContent = totalCommits;
+        document.getElementById('commit-count-text').textContent = `${totalCommits} commits to GitHub`;
     } catch (error) {
-        console.error('Error fetching commit count:', error);
-        document.getElementById('commit-count').textContent = 'Error';
+        document.getElementById('commit-count-text').textContent = 'GitHub stats unavailable';
     }
 }
+
+// Initialize
+document.addEventListener('DOMContentLoaded', () => {
+    updateCommitCount();
+    setInterval(updateCommitCount, 300000); // Refresh every 5 minutes
+});
 
 // Uptime tracker
 function updateUptime() {
@@ -52,10 +57,3 @@ function updateUptime() {
         document.getElementById('uptime').textContent = formatUptime(uptime);
     }, 1000);
 }
-
-// Initialize
-document.addEventListener('DOMContentLoaded', () => {
-    fetchCommitCount();
-    setInterval(fetchCommitCount, 300000); // Refresh every 5 minutes
-    updateUptime();
-});

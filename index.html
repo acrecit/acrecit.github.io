@@ -5,63 +5,35 @@ title: Home
 
 <div class="page">
   <div class="page-content">
-    <div class="info-grid">
-      <!-- Identity Section -->
-      <div class="grid-section identity">
-        <div class="section-header">
-          <h1>ACRECITI</h1>
-          <div class="status-line">
-            <span class="status active">ACTIVE</span>
-            <span class="timestamp">UPTIME: <span id="uptime">0:00:00</span></span>
-          </div>
-        </div>
-        <div class="tags">
-          <span class="tag">CYBERSEC</span>
-          <span class="tag">DEV</span>
-          <span class="tag">HARDWARE</span>
-          <span class="tag">PHILOSOPHER-KING</span>
+    <div class="main-grid">
+      <!-- About Section -->
+      <div class="grid-section">
+        <h1>ACRECITI</h1>
+        <p class="subtitle">Cybersec | Dev | Hardware | Philosopher-king</p>
+        <div class="stats-line">
+          <span>{{ site.posts.size }} posts written</span>
+          <span class="separator">•</span>
+          <span id="commit-count-text">Loading commit data...</span>
         </div>
       </div>
 
-      <!-- Stats Grid -->
-      <div class="grid-section metrics">
-        <div class="metrics-container">
-          <a href="/posts" class="metric-box">
-            <span class="metric-label">POSTS</span>
-            <span class="metric-value">{{ site.posts.size }}</span>
-          </a>
-          <a href="https://github.com/acrecit" class="metric-box">
-            <span class="metric-label">COMMITS</span>
-            <span class="metric-value" id="commit-count">Loading...</span>
-          </a>
-        </div>
-      </div>
-
-      <!-- Recent Activity -->
-      <div class="grid-section activity">
-        <h3>RECENT TRANSMISSIONS</h3>
-        <div class="activity-feed">
-          {% assign post_count = site.posts | size %}
-          {% for post in site.posts limit:2 %}
-          <a href="{{ post.url }}" class="activity-item {% if post_count == 1 %}single-post{% endif %}">
-            <div class="activity-content">
-              <span class="activity-title">{{ post.title }}</span>
-              <span class="activity-time">[{{ post.date | date: "%Y-%m-%d" }}]</span>
-            </div>
-          </a>
+      <!-- Recent Posts -->
+      <div class="grid-section">
+        <h3>RECENT</h3>
+        <div class="posts-list">
+          {% for post in site.posts limit:3 %}
+            <a href="{{ post.url }}" class="post-link">
+              <span class="post-title">{{ post.title }}</span>
+              <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+            </a>
           {% endfor %}
         </div>
       </div>
 
-      <!-- Links Grid -->
-      <div class="grid-section connections">
-        <h3>NETWORK NODES</h3>
-        <div class="connection-grid">
-          <a href="/research" class="node">
-            <span class="node-icon">⚡</span>
-            <span class="node-label">CURRENT RESEARCH</span>
-          </a>
-        </div>
+      <!-- Research -->
+      <div class="grid-section">
+        <h3>RESEARCH</h3>
+        <a href="/research" class="section-link">View Current Research →</a>
       </div>
     </div>
   </div>

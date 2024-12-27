@@ -4,42 +4,12 @@ title: Resources
 permalink: /resources/
 ---
 
-<!-- here are some useful things i've found over the years.
-
-i know theres nothing here yet, but im working on it.
-
- -->  
-
-coming soon...
-
-<!-- ## Category 1
-- **Subcategory A**
-  - [Resource 1](https://example.com)
-  - [Resource 2](https://example.com)
-  - [Resource 3](https://example.com)
-
-- **Subcategory B**
-  - [Resource 1](https://example.com)
-  - [Resource 2](https://example.com)
-  - [Resource 3](https://example.com)
-
-## Category 2
-- **Subcategory A**
-  - [Resource 1](https://example.com)
-  - [Resource 2](https://example.com)
-
-- **Subcategory B**
-  - [Resource 1](https://example.com)
-  - [Resource 2](https://example.com)
-
-## Category 3
-- **Subcategory A**
-  - [Resource 1](https://example.com)
-  - [Resource 2](https://example.com)
-  - [Resource 3](https://example.com)
-
-- **Subcategory B**
-  - [Resource 1](https://example.com)
-  - [Resource 2](https://example.com)
-  - [Resource 3](https://example.com)
- -->
+<div class="page">
+  <div class="posts-container">
+    <h1 class="posts-title"></h1>
+    <div class="resource-links">
+      <a href="/resources/current" class="resource-button">WHAT I'M READING</a>
+      <a href="/resources/recommended" class="resource-button">WHAT I RECOMMEND</a>
+    </div>
+  </div>
+</div>

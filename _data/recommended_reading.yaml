@@ -1,0 +1,15 @@
+- name: "n/a"
+  books:
+    - title: "The Bible"
+      author: "God"
+      why: "The holy book of the Christian faith"
+
+    - title: "The Meditations"
+      author: "Marcus Aurelius"
+      why: "The best self-help book ever written"
+
+- name: "n/a"
+  books:
+    - title: "Basic Economics"
+      author: "Thomas Sowell"
+      why: "The best economics book ever written"

@@ -8,29 +8,54 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <nav class="nav">
-        <div class="nav-container">
-            <a href="/" class="nav-home">{{ site.title }}</a>
-            <div class="nav-links">
-                <a href="/">Home</a>
-                <a href="/posts">Posts</a>
-                <a href="/resources">Resources</a>
-                <a href="/contact">Contact</a>
-                <a href="https://github.com/acrecit" target="_blank">GitHub</a>
-                <a href="https://x.com/acreciti" target="_blank">X</a>
+    <div class="site-wrapper">
+        <nav class="nav">
+            <div class="nav-container">
+                <a href="/" class="nav-home">{{ site.title }}</a>
+                <div class="nav-links">
+                    <a href="/">Home</a>
+                    <a href="https://github.com/acrecit" target="_blank">GitHub</a>
+                    <a href="https://x.com/acreciti" target="_blank">X</a>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
+        
+        <div class="layout-container">
+            <aside class="sidebar-left">
+                <div class="sidebar-content">
+                    <h3>DIRECTORY</h3>
+                    <ul class="directory-list">
+                        <li><a href="/posts">All Posts</a></li>
+                        <li><a href="/resources/current">Currently Reading</a></li>
+                        <li><a href="/resources/recommended">Recommended</a></li>
+                        <li><a href="/research">Current Projects</a></li>
+                        <li><a href="/resources">Resources</a></li>
+                        <li class="directory-separator"></li>
+                        <li><a href="/contact">Contact</a></li>
+                    </ul>
+                </div>
+            </aside>
 
-    <main class="content">
-        {{ content }}
-    </main>
+            <main class="content">
+                {{ content }}
+            </main>
 
-    <footer class="footer">
-        <div class="footer-content">
-            <p>&copy; {{ site.time | date: '%Y' }} {{ site.title }}. All rights reserved.</p>
+            <aside class="sidebar-right">
+                <div class="sidebar-content">
+                    <h3>ADVERTISEMENTS</h3>
+                    <div class="ad-space">
+                        <!-- Ad content will go here -->
+                    </div>
+                </div>
+            </aside>
         </div>
-    </footer>
+
+        <footer class="footer">
+            <div class="footer-content">
+                <p>&copy; {{ site.time | date: '%Y' }} {{ site.title }}. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
 
     <script src="/assets/js/main.js"></script>
     <script src="/assets/js/stats.js"></script>
