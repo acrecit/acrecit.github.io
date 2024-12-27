@@ -1165,7 +1165,7 @@ a:hover, button:hover, input[type="submit"]:hover, .post-card:hover {
 
 .content {
     margin-left: 250px;
-    margin-right: 250px;
+    margin-right: 0;
     padding: 0 2rem;
 }
 
@@ -1202,18 +1202,15 @@ a:hover, button:hover, input[type="submit"]:hover, .post-card:hover {
 
 @media (max-width: 1200px) {
     .layout-container {
-        grid-template-columns: 200px 1fr;
-    }
-    .sidebar-right {
-        display: none;
+        grid-template-columns: 200px 1fr 200px;
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
     .layout-container {
-        grid-template-columns: 1fr;
+        grid-template-columns: 200px 1fr;
     }
-    .sidebar-left {
+    .sidebar-right {
         display: none;
     }
 }
@@ -1306,3 +1303,115 @@ a:hover, button:hover, input[type="submit"]:hover, .post-card:hover {
         width: 100%;
     }
 }
+
+.mobile-only {
+    display: none;
+}
+
+@media (max-width: 1200px) {
+    .mobile-only {
+        display: block;
+    }
+}
+
+.ads-media-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.ads-media-content .ad-space {
+    width: 100%;
+    max-width: 300px;
+    text-align: center;
+}
+
+.media-content {
+    padding: 2rem;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.media-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    width: 100%;
+}
+
+.media-item {
+    width: 40vw;
+    max-width: 500px;
+    height: auto;
+    object-fit: contain;
+    image-rendering: pixelated;
+}
+
+@media (max-width: 768px) {
+    .media-item {
+        width: 100%;
+    }
+    
+    .media-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* MAXIMUM CHONK for desktop */
+@media (min-width: 769px) {
+    .media-item {
+        width: 800px; /* ABSOLUTE UNIT */
+    }
+}
+
+.media-item-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+}
+
+.buttons-content {
+    padding: 2rem;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.buttons-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto 2rem auto;
+    padding: 1rem;
+}
+
+.button-link {
+    display: block;
+    transition: transform 0.2s ease;
+}
+
+.button-link:hover {
+    transform: translateY(-2px);
+    transition: transform 0.2s ease;
+}
+
+.button-img {
+    width: 88px;
+    height: 31px;
+    image-rendering: pixelated;
+}
+
+.button-link:hover {
+    transform: translateY(-2px);
+    transition: transform 0.2s ease;
+}
+
