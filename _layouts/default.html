@@ -11,6 +11,7 @@
     <div class="site-wrapper">
         <nav class="nav">
             <div class="nav-container">
+                <button class="mobile-menu-toggle" aria-label="Toggle menu">☰</button>
                 <a href="/" class="nav-home">{{ site.title }}</a>
                 <div class="nav-links">
                     <a href="/">Home</a>
@@ -56,14 +57,6 @@
                 <p>&copy; {{ site.time | date: '%Y' }} {{ site.title }}. All rights reserved.</p>
             </div>
         </footer>
-    </div>
-
-    <script src="/assets/js/main.js"></script>
-    <script src="/assets/js/stats.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            updateCommitCount();
-        });
-    </script>
-</body>
+        <script src="/assets/js/main.js"></script>
+    </body>
 </html>
