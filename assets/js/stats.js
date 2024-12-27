@@ -1,14 +1,22 @@
 // GitHub API integration
 async function updateCommitCount() {
     try {
-        // Get all repos first
+        console.log('Fetching repos...');
         const reposResponse = await fetch('https://api.github.com/users/acrecit/repos');
+        console.log('Repos response:', reposResponse);
+        
+        if (!reposResponse.ok) {
+            throw new Error(`GitHub API returned ${reposResponse.status}`);
+        }
+        
         const repos = await reposResponse.json();
+        console.log('Found repos:', repos);
         
         let totalCommits = 0;
         
         // Get commit count for each repo
         for (const repo of repos) {
+            console.log(`Fetching commits for ${repo.name}...`);
             const commitsResponse = await fetch(`https://api.github.com/repos/acrecit/${repo.name}/commits?per_page=1`);
             const linkHeader = commitsResponse.headers.get('Link');
             
@@ -27,6 +35,7 @@ async function updateCommitCount() {
         
         document.getElementById('commit-count-text').textContent = `${totalCommits} commits to GitHub`;
     } catch (error) {
+        console.error('Error fetching GitHub stats:', error);
         document.getElementById('commit-count-text').textContent = 'GitHub stats unavailable';
     }
 }
