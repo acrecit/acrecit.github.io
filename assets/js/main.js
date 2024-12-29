@@ -41,9 +41,35 @@ const initMobileMenu = () => {
     });
 };
 
+// Image modal functionality
+const initImageModal = () => {
+    const modal = document.querySelector('.image-modal');
+    const modalImg = document.querySelector('.modal-content');
+    const closeBtn = document.querySelector('.close-modal');
+    const images = document.querySelectorAll('.media-item');
+
+    images.forEach(img => {
+        img.addEventListener('click', () => {
+            modal.style.display = 'block';
+            modalImg.src = img.src;
+        });
+    });
+
+    closeBtn.addEventListener('click', () => {
+        modal.style.display = 'none';
+    });
+
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
+};
+
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Initializing mobile menu');
     initSmoothScroll();
     initMobileMenu();
+    initImageModal();
 });

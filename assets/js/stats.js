@@ -1,33 +1,45 @@
 // GitHub API integration
 async function updateCommitCount() {
     try {
+        // Add user agent header to avoid GitHub API rejection
+        const headers = {
+            'User-Agent': 'acrecit-website'
+        };
+
         console.log('Fetching repos...');
-        const reposResponse = await fetch('https://api.github.com/users/acrecit/repos');
-        console.log('Repos response:', reposResponse);
+        const reposResponse = await fetch('https://api.github.com/users/acrecit/repos', { headers });
+        
+        // Log rate limit info
+        console.log('Rate limit remaining:', reposResponse.headers.get('X-RateLimit-Remaining'));
         
         if (!reposResponse.ok) {
-            throw new Error(`GitHub API returned ${reposResponse.status}`);
+            throw new Error(`GitHub API returned ${reposResponse.status}: ${await reposResponse.text()}`);
         }
         
         const repos = await reposResponse.json();
-        console.log('Found repos:', repos);
+        console.log(`Found ${repos.length} repos`);
         
         let totalCommits = 0;
         
-        // Get commit count for each repo
         for (const repo of repos) {
             console.log(`Fetching commits for ${repo.name}...`);
-            const commitsResponse = await fetch(`https://api.github.com/repos/acrecit/${repo.name}/commits?per_page=1`);
-            const linkHeader = commitsResponse.headers.get('Link');
+            const commitsResponse = await fetch(
+                `https://api.github.com/repos/acrecit/${repo.name}/commits?per_page=1`,
+                { headers }
+            );
             
+            if (!commitsResponse.ok) {
+                console.error(`Failed to fetch commits for ${repo.name}:`, await commitsResponse.text());
+                continue;
+            }
+
+            const linkHeader = commitsResponse.headers.get('Link');
             if (linkHeader) {
-                // Extract last page number from Link header
                 const matches = linkHeader.match(/page=(\d+)>; rel="last"/);
                 if (matches) {
                     totalCommits += parseInt(matches[1]);
                 }
             } else {
-                // If no Link header, count commits in response
                 const commits = await commitsResponse.json();
                 totalCommits += commits.length;
             }

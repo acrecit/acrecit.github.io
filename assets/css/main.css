@@ -1329,25 +1329,79 @@ a:hover, button:hover, input[type="submit"]:hover, .post-card:hover {
 }
 
 .media-content {
-    padding: 2rem;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.media-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
 }
 
-.media-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+.media-item {
     width: 100%;
+    height: 150px;
+    object-fit: contain;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--matrix-green);
+    padding: 0.5rem;
+    cursor: pointer;
+    transition: transform 0.2s ease;
 }
 
-.media-item {
-    width: 40vw;
-    max-width: 500px;
-    height: auto;
+.media-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px var(--matrix-green);
+}
+
+/* Modal styles */
+.image-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 90vw;
+    max-height: 90vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 2px solid var(--matrix-green);
+    box-shadow: 0 0 20px var(--matrix-green);
     object-fit: contain;
-    image-rendering: pixelated;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 1rem;
+}
+
+.close-modal {
+    position: absolute;
+    right: 2rem;
+    top: 2rem;
+    color: var(--matrix-green);
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.close-modal:hover {
+    color: var(--text-color);
 }
 
 @media (max-width: 768px) {
@@ -1356,14 +1410,12 @@ a:hover, button:hover, input[type="submit"]:hover, .post-card:hover {
     }
     
     .media-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        padding: 0.5rem;
     }
-}
-
-/* MAXIMUM CHONK for desktop */
-@media (min-width: 769px) {
+    
     .media-item {
-        width: 800px; /* ABSOLUTE UNIT */
+        height: 100px;
     }
 }
 
