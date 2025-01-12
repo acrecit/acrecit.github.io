@@ -17,6 +17,12 @@ collections:
   readings:
     output: true
     permalink: /readings/:path/
+  fragments:
+    output: true
+    permalink: /fragments/:path/
+  hall:
+    output: true
+    permalink: /hall/:path/
 
 # Default front matter
 defaults:
