@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: page
 title: HALL OF FAME
 permalink: /hall/
 ---
